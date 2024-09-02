@@ -4,7 +4,7 @@ const API = axios.create({
   baseURL: "http://localhost:5000/api/",
 });
 
-export const UserSignUp = async (data) => API.post("useraccount", data);
+export const UserSignUp = async (data) => API.post("/useraccount", data);
 export const UserSignIn = async (data) => API.post("/user/signin", data);
 
 export const getDashboardDetails = async (token) =>

@@ -10,6 +10,8 @@ app.use(express.urlencoded({extended:true}))
 
 // app.use('/api/todoapp',require('./routes/todoRoutes'))
 app.use('/api/useraccount',require('./routes/useraccountRoute'))
+app.use('/api/workout',require('./routes/workoutRoutes'))
+app.use('/api/exercise',require('./routes/exerciseRoutes'))
 app.use('/api/useraccount/login',require('./routes/loginRoute'))
 
 

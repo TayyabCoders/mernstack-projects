@@ -1,4 +1,4 @@
-const Exercise = require('../models/workoutTracking_Model').Exercise;
+const Exercise = require('../models/workoutTracking').Exercise;
 
 // Get all exercises for a specific workout
 const getExercises = async (req, res) => {
