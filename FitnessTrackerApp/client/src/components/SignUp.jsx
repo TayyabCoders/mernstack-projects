@@ -28,12 +28,12 @@ const SignUp = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(false);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [userName, setName] = useState("");
+  const [userEmail, setEmail] = useState("");
+  const [userPassword, setPassword] = useState("");
 
   const validateInputs = () => {
-    if (!name || !email || !password) {
+    if (!userName || !userEmail || !userPassword) {
       alert("Please fill in all fields");
       return false;
     }
@@ -44,7 +44,7 @@ const SignUp = () => {
     setLoading(true);
     setButtonDisabled(true);
     if (validateInputs()) {
-      await UserSignUp({ name, email, password })
+      await UserSignUp({ userName, userEmail, userPassword })
         .then((res) => {
           dispatch(loginSuccess(res.data));
           alert("Account Created Success");
@@ -74,20 +74,20 @@ const SignUp = () => {
         <TextInput
           label="Full name"
           placeholder="Enter your full name"
-          value={name}
+          value={userName}
           handelChange={(e) => setName(e.target.value)}
         />
         <TextInput
           label="Email Address"
           placeholder="Enter your email address"
-          value={email}
+          value={userEmail}
           handelChange={(e) => setEmail(e.target.value)}
         />
         <TextInput
           label="Password"
           placeholder="Enter your password"
           password
-          value={password}
+          value={userPassword}
           handelChange={(e) => setPassword(e.target.value)}
         />
         <Button
