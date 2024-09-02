@@ -9,8 +9,8 @@ app.use(express.urlencoded({extended:true}))
 
 
 // app.use('/api/todoapp',require('./routes/todoRoutes'))
-// app.use('/api/useraccount',require('./routes/userAccountRoutes'))
-// app.use('/api/useraccount/login',require('./routes/loginRoutes'))
+app.use('/api/useraccount',require('./routes/useraccountRoute'))
+app.use('/api/useraccount/login',require('./routes/loginRoute'))
 
 
 

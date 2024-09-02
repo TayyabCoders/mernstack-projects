@@ -18,14 +18,15 @@ const createUserAccount = async(req,res)=>{
     const {userName,userEmail,userPassword} = req.body;
 
     // checking user already created or not 
-    const userAvailabilty = await userAccount_Model.findOne({userEmail})
+    const userAvailabiltyEmail = await userAccount_Model.findOne({userEmail})
+    const userAvailabiltyName = await userAccount_Model.findOne({userName})
 
-
-    if(userAvailabilty){
+    if(userAvailabiltyEmail){
         return res.status(400).json({ error: 'Email is already taken ' });
     }
-    
-
+    if(userAvailabiltyName){
+        return res.status(400).json({ error: 'Name is already taken ' });
+    }
     if(!userName){
         return res.status(400).json({ error: 'user name is required' });
     }
@@ -112,9 +113,6 @@ const deleteUserAccount = async(req,res)=>{
 
     res.status(200).json({success:'account deleted successfully'})
 }
-
-
-
 module.exports = {
     getUserAccount,
     createUserAccount,
