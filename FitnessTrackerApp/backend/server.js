@@ -1,9 +1,11 @@
 const express = require("express");
+const cors = require('cors');
 const dotenv = require("dotenv").config();
 const ConnectDB  = require("./config/DB.js");
 
 const app = express();
 app.use(express.json());
+app.use(cors()); // enable CORS for all route
 app.use(express.urlencoded({extended:true}))
 
 
