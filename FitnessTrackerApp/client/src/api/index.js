@@ -5,7 +5,7 @@ const API = axios.create({
 });
 
 export const UserSignUp = async (data) => API.post("/useraccount", data);
-export const UserSignIn = async (data) => API.post("/user/signin", data);
+export const UserSignIn = async (data) => API.post("/useraccount/login", data);
 
 export const getDashboardDetails = async (token) =>
   API.get("/user/dashboard", {

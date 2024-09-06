@@ -27,19 +27,14 @@ const Login = async(req,res)=>{
     const Password_Auth = await bcrypt.compare(userPassword,userAuth.userPassword);
     
     if(!Password_Auth){
-        return res.status(400).json({ error: 'crediential is wrong ' });
+        return res.status(400).json({ message: 'crediential is wrong ' });
     }
 
 
     // jwt access
 
-    const token = await jwt.sign(
-        {userAuth},
-        process.env.SECRET_KEY,
-        {expiresIn:'30d'}
-    )
-
-    return res.status(400).json({"token":token});
+    
+    return res.status(200).json({ message: 'Login successful' });
 }
 
 
