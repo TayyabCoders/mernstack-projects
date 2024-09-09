@@ -76,6 +76,7 @@ const Dashboard = () => {
 
   const dashboardData = async () => {
     setLoading(true);
+    console.log('Token:', token); 
     const token = localStorage.getItem("fittrack-app-token");
     await getDashboardDetails(token).then((res) => {
       setData(res.data);

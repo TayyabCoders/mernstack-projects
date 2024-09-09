@@ -8,7 +8,7 @@ export const UserSignUp = async (data) => API.post("/useraccount", data);
 export const UserSignIn = async (data) => API.post("/useraccount/login", data);
 
 export const getDashboardDetails = async (token) =>
-  API.get("/user/dashboard", {
+  API.get("/dashboard", {
     headers: { Authorization: `Bearer ${token}` },
   });
 
