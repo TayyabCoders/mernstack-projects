@@ -22,7 +22,8 @@ const userAccount_Model = mongoose.Schema(
             required:[true,'Please enter your user password']
         },
         userProfile:{
-            type:String
+            type:String,
+            default: ''
         },
         createdAt: { 
             type: Date, 

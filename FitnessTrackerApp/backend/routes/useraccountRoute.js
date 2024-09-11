@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const upload = require('../middleware/ImageHandle');
 
 const { 
     getUserAccount,
@@ -9,10 +10,10 @@ const {
 } = require('../controllers/useraccountController');
 
 
-router.route('/').get(getUserAccount).post(createUserAccount);
+router.route('/').get(getUserAccount).post(upload,createUserAccount);
 
 
-router.route('/:id').put(updateUserAccount).delete(deleteUserAccount);
+router.route('/:id').put(upload,updateUserAccount).delete(deleteUserAccount);
 
 
 

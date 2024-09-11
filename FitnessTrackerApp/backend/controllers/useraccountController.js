@@ -43,11 +43,15 @@ const createUserAccount = async(req,res)=>{
     const genSalt = await bcrypt.genSalt(10);
     const hashPassword = await bcrypt.hash(userPassword,genSalt);
 
+    // Handle file upload
+    const profileImage = req.file ? req.file.path : '';
+
     // Data insertion in Model
     const newUser  = await userAccount_Model.create({
         userName:userName,
         userEmail:userEmail,
         userPassword:hashPassword,
+        userProfile: profileImage,
         userRole:'customer'
     })
 
@@ -80,11 +84,14 @@ const updateUserAccount = async(req,res)=>{
         return res.status(400).json({ error: 'user password is required' });
     }
 
+    // Handle file upload
+    const profileImage = req.file ? req.file.path : '';
     // Update Data Object
     const updateData = {
         userName:userName,
         userEmail:userEmail,
         userPassword:userPassword,
+        userProfile: profileImage,
         userRole:'customer'
     }
 
