@@ -626,39 +626,12 @@ export default function Sidebar() {
             <ul>
               <li><a href="widgets-data.html"><i className="material-icons-outlined">arrow_right</i>Data</a>
               </li>
-              <li><a href="widgets-static.html"><i className="material-icons-outlined">arrow_right</i>Static</a>
-              </li>
+              
             </ul>
           </li>
-          <li>
-            <a className="has-arrow" href="javascript:;">
-              <div className="parent-icon"><i className="material-icons-outlined">apps</i>
-              </div>
-              <div className="menu-title">Apps</div>
-            </a>
-            <ul>
-              <li><a href="app-emailbox.html"><i className="material-icons-outlined">arrow_right</i>Email Box</a>
-              </li>
-              <li><a href="app-emailread.html"><i className="material-icons-outlined">arrow_right</i>Email Read</a>
-              </li>
-              <li><a href="app-chat-box.html"><i className="material-icons-outlined">arrow_right</i>Chat</a>
-              </li>
-              <li><a href="app-fullcalender.html"><i className="material-icons-outlined">arrow_right</i>Calendar</a>
-              </li>
-              <li><a href="app-to-do.html"><i className="material-icons-outlined">arrow_right</i>To do</a>
-              </li>
-              <li><a href="app-invoice.html"><i className="material-icons-outlined">arrow_right</i>Invoice</a>
-              </li>
-            </ul>
-          </li>
+        
           <li className="menu-label">UI Elements</li>
-          <li>
-            <a href="cards.html">
-              <div className="parent-icon"><i className="material-icons-outlined">inventory_2</i>
-              </div>
-              <div className="menu-title">Cards</div>
-            </a>
-          </li>
+          
           
           <li>
             <a href="javascript:;" className="has-arrow">
@@ -667,81 +640,26 @@ export default function Sidebar() {
               <div className="menu-title">eCommerce</div>
             </a>
             <ul>
-              <li><a href="ecommerce-add-product.html"><i className="material-icons-outlined">arrow_right</i>Add Product</a>
+              <li><a href="ecommerce-add-product.html"><i className="material-icons-outlined">arrow_right</i>Nutrition Form</a>
               </li>
-              <li><a href="ecommerce-products.html"><i className="material-icons-outlined">arrow_right</i>Products</a>
+              <li><a href="ecommerce-products.html"><i className="material-icons-outlined">arrow_right</i>Nutrition List</a>
               </li>
-              <li><a href="ecommerce-customers.html"><i className="material-icons-outlined">arrow_right</i>Customers</a>
+              <li><a href="ecommerce-customers.html"><i className="material-icons-outlined">arrow_right</i>Progress Form</a>
               </li>
-              <li><a href="ecommerce-customer-details.html"><i className="material-icons-outlined">arrow_right</i>Customer Details</a>
+              <li><a href="ecommerce-customer-details.html"><i className="material-icons-outlined">arrow_right</i>Progress List</a>
               </li>
-              <li><a href="ecommerce-orders.html"><i className="material-icons-outlined">arrow_right</i>Orders</a>
+              <li><a href="ecommerce-orders.html"><i className="material-icons-outlined">arrow_right</i>Workout Form</a>
               </li>
-              <li><a href="ecommerce-order-details.html"><i className="material-icons-outlined">arrow_right</i>Order Details</a>
+              <li><a href="ecommerce-order-details.html"><i className="material-icons-outlined">arrow_right</i>Workout List</a>
               </li>
             </ul>     
           </li>
+
           <li>
-            <a className="has-arrow" href="javascript:;">
-              <div className="parent-icon"><i className="material-icons-outlined">card_giftcard</i>
-              </div>
-              <div className="menu-title">Components</div>
-            </a>
+            
             <ul>
-              <li><a href="component-alerts.html"><i className="material-icons-outlined">arrow_right</i>Alerts</a>
-              </li>
-              <li><a href="component-accordions.html"><i className="material-icons-outlined">arrow_right</i>Accordions</a>
-              </li>
-              <li><a href="component-badges.html"><i className="material-icons-outlined">arrow_right</i>Badges</a>
-              </li>
-              <li><a href="component-buttons.html"><i className="material-icons-outlined">arrow_right</i>Buttons</a>
-              </li>
-              <li><a href="component-carousels.html"><i className="material-icons-outlined">arrow_right</i>Carousels</a>
-              </li>
-              <li><a href="component-media-object.html"><i className="material-icons-outlined">arrow_right</i>Media
-                  Objects</a>
-              </li>
-              <li><a href="component-modals.html"><i className="material-icons-outlined">arrow_right</i>Modals</a>
-              </li>
-              <li><a href="component-navs-tabs.html"><i className="material-icons-outlined">arrow_right</i>Navs & Tabs</a>
-              </li>
-              <li><a href="component-navbar.html"><i className="material-icons-outlined">arrow_right</i>Navbar</a>
-              </li>
-              <li><a href="component-paginations.html"><i className="material-icons-outlined">arrow_right</i>Pagination</a>
-              </li>
-              <li><a href="component-popovers-tooltips.html"><i className="material-icons-outlined">arrow_right</i>Popovers
-                  & Tooltips</a>    
-              </li>
-              <li><a href="component-progress-bars.html"><i className="material-icons-outlined">arrow_right</i>Progress</a>
-              </li>
-              <li><a href="component-spinners.html"><i className="material-icons-outlined">arrow_right</i>Spinners</a>
-              </li>
-              <li><a href="component-notifications.html"><i
-                    className="material-icons-outlined">arrow_right</i>Notifications</a>
-              </li>
-              <li><a href="component-avtars-chips.html"><i className="material-icons-outlined">arrow_right</i>Avatrs &
-                  Chips</a>
-              </li>
-              <li><a href="component-typography.html"><i className="material-icons-outlined">arrow_right</i>Typography</a>
-               </li>
-               <li><a href="component-text-utilities.html"><i className="material-icons-outlined">arrow_right</i>Utilities</a>
-               </li>
-            </ul>
-          </li>
-          <li>
-            <a className="has-arrow" href="javascript:;">
-              <div className="parent-icon"><i className="material-icons-outlined">view_agenda</i>
-              </div>
-              <div className="menu-title">Icons</div>
-            </a>
-            <ul>
-              <li><a href="icons-line-icons.html"><i className="material-icons-outlined">arrow_right</i>Line Icons</a>
-              </li>
-              <li><a href="icons-boxicons.html"><i className="material-icons-outlined">arrow_right</i>Boxicons</a>
-              </li>
-              <li><a href="icons-feather-icons.html"><i className="material-icons-outlined">arrow_right</i>Feather
-                  Icons</a>
-              </li>
+             
+             
             </ul>
           </li>
           <li className="menu-label">Forms & Tables</li>
@@ -830,13 +748,7 @@ export default function Sidebar() {
               <div className="menu-title">User Profile</div>
             </a>
           </li>
-          <li>
-            <a href="timeline.html">
-              <div className="parent-icon"><i className="material-icons-outlined">join_right</i>
-              </div>
-              <div className="menu-title">Timeline</div>
-            </a>
-          </li>
+         
           <li>
             <a className="has-arrow" href="javascript:;">
               <div className="parent-icon"><i className="material-icons-outlined">report_problem</i>
@@ -865,13 +777,12 @@ export default function Sidebar() {
               <div className="menu-title">FAQ</div>
             </a>
           </li>
-          <li>
+         <li>
             <a href="pricing-table.html">
-              <div className="parent-icon"><i className="material-icons-outlined">sports_football</i>
-              </div>
-              <div className="menu-title">Pricing</div>
+              
+             
             </a>
-          </li>
+          </li> 
           <li className="menu-label">Charts & Maps</li>
           <li>
             <a className="has-arrow" href="javascript:;">
@@ -886,55 +797,8 @@ export default function Sidebar() {
               </li>   
             </ul>
           </li>
-          <li>
-            <a className="has-arrow" href="javascript:;">
-              <div className="parent-icon"><i className="material-icons-outlined">sports_football</i>
-              </div>
-              <div className="menu-title">Maps</div>
-            </a>
-            <ul>
-              <li><a href="map-google-maps.html"><i className="material-icons-outlined">arrow_right</i>Google Maps</a>
-              </li>
-              <li><a href="map-vector-maps.html"><i className="material-icons-outlined">arrow_right</i>Vector Maps</a>
-              </li>
-            </ul>
-          </li>
-          <li className="menu-label">Others</li>
-          <li>
-            <a className="has-arrow" href="javascript:;">
-              <div className="parent-icon"><i className="material-icons-outlined">face_5</i>
-              </div>
-              <div className="menu-title">Menu Levels</div>
-            </a>
-            <ul>
-              <li><a className="has-arrow" href="javascript:;"><i className="material-icons-outlined">arrow_right</i>Level
-                  One</a>
-                <ul>
-                  <li><a className="has-arrow" href="javascript:;"><i className="material-icons-outlined">arrow_right</i>Level
-                      Two</a>
-                    <ul>
-                      <li><a href="javascript:;"><i className="material-icons-outlined">arrow_right</i>Level Three</a>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="javascrpt:;">
-              <div className="parent-icon"><i className="material-icons-outlined">description</i>
-              </div>
-              <div className="menu-title">Documentation</div>
-            </a>
-          </li>
-          <li>
-            <a href="javascrpt:;">
-              <div className="parent-icon"><i className="material-icons-outlined">support</i>
-              </div>
-              <div className="menu-title">Support</div>
-            </a>
-          </li>
+        
+        
          </ul>
     </div>
   </aside>
