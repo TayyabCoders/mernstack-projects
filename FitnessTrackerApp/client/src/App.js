@@ -1,46 +1,29 @@
-import { ThemeProvider, styled } from "styled-components";
-import { lightTheme } from "./utils/Themes";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Authentication from "./pages/Authentication";
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import Navbar from "./components/Navbar";
-import Dashboard from "./pages/Dashboard";
-import Workouts from "./pages/Workouts";
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Sidebar from './layouts/Sidebar';
+import Index from './components/dashboard/Index';
+import Register from './components/dashboard/auth/Register';
+import Login from './components/dashboard/auth/Login';
 
-const Container = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: ${({ theme }) => theme.bg};
-  color: ${({ theme }) => theme.text_primary};
-  overflow-x: hidden;
-  overflow-y: hidden;
-  transition: all 0.2s ease;
-`;
+
 
 function App() {
-  const { currentUser } = useSelector((state) => state.user);
   return (
-    <ThemeProvider theme={lightTheme}>
+    <>
       <BrowserRouter>
-        {currentUser ? (
-          <Container>
-            <Navbar currentUser={currentUser} />
-            <Routes>
-              <Route path="/" exact element={<Dashboard />} />
-              <Route path="/workouts" exact element={<Workouts />} />
-            </Routes>
-          </Container>
-        ) : (
-          <Container>
-            <Authentication />
-          </Container>
-        )}
+        
+      <Routes>
+      {/* Main route with Sidebar */}
+      <Route path="/" element={<><Sidebar /><Index /></>} />
+
+      {/* Other routes without Sidebar */}
+      <Route path="/register" element={<Register />} />
+      <Route path="/login" element={<Login />} />
+    </Routes>
+
       </BrowserRouter>
-    </ThemeProvider>
-  );
+    </>
+  )
 }
 
 export default App;
