@@ -87,7 +87,7 @@ export default function Sidebar() {
                     <div className="memmber-img">
                       <img src="assets/images/avatars/02.png" width="32" height="32" className="rounded-circle" alt=""/>
                     </div>
-                    <div className="">
+                    <div className="">0
                       <h5 className="mb-0 search-list-title ">Snetro Jhonia</h5>
                     </div>
                   </div>
@@ -114,167 +114,9 @@ export default function Sidebar() {
         <li className="nav-item d-lg-none mobile-search-btn">
           <a className="nav-link" href="javascript:;"><i className="material-icons-outlined">search</i></a>
         </li>
-        <li className="nav-item dropdown">
-          <a className="nav-link dropdown-toggle dropdown-toggle-nocaret" href="avascript:;" data-bs-toggle="dropdown"><img src="assets/images/county/02.png" width="22" alt=""/>
-          </a>
-          <ul className="dropdown-menu dropdown-menu-end">
-            <li><a className="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img src="assets/images/county/01.png" width="20" alt=""/><span className="ms-2">English</span></a>
-            </li>
-            <li><a className="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img src="assets/images/county/02.png" width="20" alt=""/><span className="ms-2">Catalan</span></a>
-            </li>
-            <li><a className="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img src="assets/images/county/03.png" width="20" alt=""/><span className="ms-2">French</span></a>
-            </li>
-            <li><a className="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img src="assets/images/county/04.png" width="20" alt/><span className="ms-2">Belize</span></a>
-            </li>
-            <li><a className="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img src="assets/images/county/05.png" width="20" alt=""/><span className="ms-2">Colombia</span></a>
-            </li>
-            <li><a className="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img src="assets/images/county/06.png" width="20" alt=""/><span className="ms-2">Spanish</span></a>
-            </li>
-            <li><a className="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img src="assets/images/county/07.png" width="20" alt=""/><span className="ms-2">Georgian</span></a>
-            </li>
-            <li><a className="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img src="assets/images/county/08.png" width="20" alt=""/><span className="ms-2">Hindi</span></a>
-            </li>
-          </ul>
-        </li>
+       
 
-        <li className="nav-item dropdown position-static d-md-flex d-none">
-          <a className="nav-link dropdown-toggle dropdown-toggle-nocaret" data-bs-auto-close="outside"
-          data-bs-toggle="dropdown" href="javascript:;"><i className="material-icons-outlined">done_all</i></a>
-          <div className="dropdown-menu dropdown-menu-end mega-menu shadow-lg p-4 p-lg-5">
-            <div className="mega-menu-widgets">
-             <div className="row row-cols-1 row-cols-lg-2 row-cols-xl-3 g-4 g-lg-5">
-                <div className="col">
-                  <div className="card rounded-4 shadow-none border mb-0">
-                    <div className="card-body">
-                      <div className="d-flex align-items-start gap-3">
-                        <div className="mega-menu-icon flex-shrink-0 bg-danger">
-                          <i className="material-icons-outlined">question_answer</i>
-                        </div>
-                        <div className="mega-menu-content">
-                           <h5>Marketing</h5>
-                           <p className="mb-0 f-14">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate
-                             the visual form of a document.</p>
-                        </div>
-                     </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col">
-                  <div className="card rounded-4 shadow-none border mb-0">
-                    <div className="card-body">
-                      <div className="d-flex align-items-start gap-3">
-                        <img src="assets/images/megaIcons/02.png" width="40" alt=""/>
-                        <div className="mega-menu-content">
-                           <h5>Website</h5>
-                           <p className="mb-0 f-14">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate
-                             the visual form of a document.</p>
-                        </div>
-                     </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col">
-                  <div className="card rounded-4 shadow-none border mb-0">
-                    <div className="card-body">
-                      <div className="d-flex align-items-start gap-3">
-                        <img src="assets/images/megaIcons/03.png" width="40" alt=""/>
-                        <div className="mega-menu-content"> 
-                            <h5>Subscribers</h5>
-                           <p className="mb-0 f-14">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate
-                             the visual form of a document.</p>
-                        </div>
-                     </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col">
-                  <div className="card rounded-4 shadow-none border mb-0">
-                    <div className="card-body">
-                      <div className="d-flex align-items-start gap-3">
-                        <img src="assets/images/megaIcons/01.png" width="40" alt=""/>
-                        <div className="mega-menu-content">
-                           <h5>Hubspot</h5>
-                           <p className="mb-0 f-14">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate
-                             the visual form of a document.</p>
-                        </div>
-                     </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col">
-                  <div className="card rounded-4 shadow-none border mb-0">
-                    <div className="card-body">
-                      <div className="d-flex align-items-start gap-3">
-                        <img src="assets/images/megaIcons/11.png" width="40" alt=""/>
-                        <div className="mega-menu-content">
-                           <h5>Templates</h5>
-                           <p className="mb-0 f-14">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate
-                             the visual form of a document.</p>
-                        </div>
-                     </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col">
-                  <div className="card rounded-4 shadow-none border mb-0">
-                    <div className="card-body">
-                      <div className="d-flex align-items-start gap-3">
-                        <img src="assets/images/megaIcons/13.png" width="40" alt=""/>
-                        <div className="mega-menu-content">
-                           <h5>Ebooks</h5>
-                           <p className="mb-0 f-14">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate
-                             the visual form of a document.</p>
-                        </div>
-                     </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col">
-                  <div className="card rounded-4 shadow-none border mb-0">
-                    <div className="card-body">
-                      <div className="d-flex align-items-start gap-3">
-                        <img src="assets/images/megaIcons/12.png" width="40" alt=""/>
-                        <div className="mega-menu-content">
-                           <h5>Sales</h5>
-                           <p className="mb-0 f-14">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate
-                             the visual form of a document.</p>
-                        </div>
-                     </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col">
-                  <div className="card rounded-4 shadow-none border mb-0">
-                    <div className="card-body">
-                      <div className="d-flex align-items-start gap-3">
-                        <img src="assets/images/megaIcons/08.png" width="40" alt=""/>
-                        <div className="mega-menu-content">
-                           <h5>Tools</h5>
-                           <p className="mb-0 f-14">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate
-                             the visual form of a document.</p>
-                        </div>
-                     </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col">
-                  <div className="card rounded-4 shadow-none border mb-0">
-                    <div className="card-body">
-                      <div className="d-flex align-items-start gap-3">
-                        <img src="assets/images/megaIcons/09.png" width="40" alt=""/>
-                        <div className="mega-menu-content">
-                           <h5>Academy</h5>
-                           <p className="mb-0 f-14">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate
-                             the visual form of a document.</p>
-                        </div>
-                     </div>
-                    </div>
-                  </div>
-                </div>
-             </div>
-            </div>
-          </div>
-        </li>
+      
         <li className="nav-item dropdown">
           <a className="nav-link dropdown-toggle dropdown-toggle-nocaret" data-bs-auto-close="outside"
             data-bs-toggle="dropdown" href="javascript:;"><i className="material-icons-outlined">apps</i></a>
@@ -405,9 +247,7 @@ export default function Sidebar() {
                     <div className="app-icon">
                       <img src="assets/images/apps/12.png" width="36" alt=""/>
                     </div>
-                    <div className="app-name">
-                      <p className="mb-0">Photo</p>
-                    </div>
+                   
                   </div>
                 </div>
               </div>
@@ -552,12 +392,7 @@ export default function Sidebar() {
             </div>
           </div>
         </li>
-        <li className="nav-item d-md-flex d-none">
-          <a className="nav-link position-relative" data-bs-toggle="offcanvas" href="#offcanvasCart"><i
-              className="material-icons-outlined">shopping_cart</i>
-            <span className="badge-notify">8</span>
-          </a>
-        </li>
+       
         <li className="nav-item dropdown">
           <a href="javascrpt:;" className="dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown">
              <img src="assets/images/avatars/01.png" className="rounded-circle p-1 border" width="45" height="45" alt=""/>
@@ -567,20 +402,16 @@ export default function Sidebar() {
               <div className="text-center">
                 <img src="assets/images/avatars/01.png" className="rounded-circle p-1 shadow mb-3" width="90" height="90"
                   alt=""/>
-                <h5 className="user-name mb-0 fw-bold">Hello, Jhon</h5>
+                <h5 className="user-name mb-0 fw-bold">Hello, Team of FT</h5>
               </div>
             </a>
             <hr className="dropdown-divider"/>
             <a className="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;"><i
               className="material-icons-outlined">person_outline</i>Profile</a>
-            <a className="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;"><i
-              className="material-icons-outlined">local_bar</i>Setting</a>
+    
             <a className="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;"><i
               className="material-icons-outlined">dashboard</i>Dashboard</a>
-            <a className="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;"><i
-              className="material-icons-outlined">account_balance</i>Earning</a>
-              <a className="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;"><i
-                className="material-icons-outlined">cloud_download</i>Downloads</a>
+           
             <hr className="dropdown-divider"/>
             <a className="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;"><i
             className="material-icons-outlined">power_settings_new</i>Logout</a>
@@ -593,10 +424,10 @@ export default function Sidebar() {
    <aside className="sidebar-wrapper" data-simplebar="true">
     <div className="sidebar-header">
       <div className="logo-icon">
-        <img src="assets/images/logo-icon.png" className="logo-img" alt=""/>
+        <img src="assets/images/" className="logo-img" alt=""/>
       </div>
       <div className="logo-name flex-grow-1">
-        <h5 className="mb-0">Maxton</h5>
+        <h5 className="mb-0">Fitness Tracker</h5>
       </div>
       <div className="sidebar-close">
         <span className="material-icons-outlined">close</span>
