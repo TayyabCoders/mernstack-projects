@@ -48,16 +48,20 @@ const HandleLogin =async(e)=>{
     
       
       const decodedToken = jwtDecode(token);
+      console.log(decodedToken);
+      const userId = decodedToken.userId;
       
      
       
       Cookies.set('userData',token, { expires: 7 });
+      Cookies.set('userId', userId, { expires: 7 });
+
       toastMessage("Login Successfully !!" ,"Success")
 
       setTimeout(() => {
         
         Navigate('/');
-      }, 3000);
+      }, 9000);
 
     }
 

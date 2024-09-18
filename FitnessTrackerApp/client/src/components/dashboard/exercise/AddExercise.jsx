@@ -1,43 +1,65 @@
-import React, { useState,useEffect  } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-export default function AddWorkout() {
-    const [name, setName] = useState('');
-  const [category, setCategory] = useState('strength');
-  const [date, setDate] = useState('');
-  const [workouts, setWorkouts] = useState([]);
-  
+export default function AddExercise() {
+    const [workout, setWorkout] = useState('');
+  const [name, setName] = useState('');
+  const [sets, setSets] = useState('');
+  const [reps, setReps] = useState('');
+  const [weight, setWeight] = useState('');
+  const [notes, setNotes] = useState('');
+  const [workoutOptions, setWorkoutOptions] = useState([]);
+  const [exercises, setExercises] = useState([]);
+
+  // Fetch workouts from backend when component mounts
+  useEffect(() => {
+    axios.get('http://localhost:5000/api/workout') // Adjust API endpoint as needed
+      .then(response => {
+        setWorkoutOptions(response.data); // Assuming response.data contains the list of workouts
+      })
+      .catch(error => {
+        console.error('Error fetching workouts:', error);
+      });
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('User ID from cookie:', Cookies.get('userId'));
-    const userId = Cookies.get('userId');
-    if (!userId) {
-      console.error('User ID is not found in the cookie!');
-      return;
-    }
-    axios.post('http://localhost:5000/api/workout', { name, category,user: userId })
+
+    // const userId = Cookies.get('userId');
+    // if (!userId) {
+    //   console.error('User ID is not found in the cookie!');
+    //   return;
+    // }
+
+    axios.post('http://localhost:5000/api/exercise', { 
+        workout, 
+        name, 
+        sets, 
+        reps, 
+        weight, 
+        notes, 
+    })
+    .then(response => {
+      console.log('Exercise added!', response.data);
+      // Optionally clear form fields or handle response
+    })
+    .catch(error => {
+      console.error('There was an error adding the exercise!', error);
+    });
+  };
+  useEffect(() => {
+    axios.get('http://localhost:5000/api/exercise')
       .then(response => {
-        console.log('Workout added!', response.data);
-        // Optionally clear form fields or handle response
+        setExercises(response.data);
       })
       .catch(error => {
-        console.error('There was an error adding the workout!', error);
+        console.error('There was an error fetching the workouts!', error);
       });
-    };
-    useEffect(() => {
-        axios.get('http://localhost:5000/api/workout')
-          .then(response => {
-            setWorkouts(response.data);
-          })
-          .catch(error => {
-            console.error('There was an error fetching the workouts!', error);
-          });
-      }, []);
-    return (
-        <>
-            <main className="main-wrapper">
+  }, []);
+  return (
+    <>
+    <main className="main-wrapper">
                 <div className="main-content">
                     <div className="row">
                         <div className="col-12 col-xl-12">
@@ -45,7 +67,7 @@ export default function AddWorkout() {
                                 <div className="card-body p-4">
                                     <div className="d-flex align-items-start justify-content-between mb-3">
                                         <div className="">
-                                            <h5 className="mb-0 fw-bold">Add Workout</h5>
+                                            <h5 className="mb-0 fw-bold">Add Exercise</h5>
                                         </div>
                                         <div className="dropdown">
                                             <a href="javascript:;" className="dropdown-toggle-nocaret options dropdown-toggle"
@@ -61,22 +83,41 @@ export default function AddWorkout() {
                                     </div>
                                     <form onSubmit={handleSubmit} className="row g-4">
                                         <div className="col-md-6">
-                                            <label for="input1" className="form-label">Workout Name</label>
+                                            <label for="input1" className="form-label">Exercise Name</label>
                                             <input value={name} onChange={e => setName(e.target.value)} type="text" className="form-control" id="input1" placeholder="Workout Name" />
                                         </div>
                                        
                                         <div className="col-md-12">
-                                            <label for="input7" className="form-label">Category</label>
-                                            <select value={category} onChange={e => setCategory(e.target.value)}  id="input7" className="form-select">
-                                                <option selected="">Choose...</option>
-                                                <option value="strength">Strength</option>
-                                                <option value="cardio">Cardio</option>
-                                            </select>
+                                            <label for="input7" className="form-label">Workout</label>
+                                            <select 
+          value={workout} 
+          onChange={(e) => setWorkout(e.target.value)} 
+          required
+        >
+          <option value="">Select Workout</option>
+          {workoutOptions.map((workoutOption) => (
+            <option key={workoutOption._id} value={workoutOption._id}>
+              {workoutOption.name} {/* Adjust to fit your workout object structure */}
+            </option>
+          ))}
+        </select>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <label for="input1" className="form-label">Sets</label>
+                                            <input value={sets} onChange={e => setSets(e.target.value)} type="text" className="form-control" id="input1" placeholder="Workout Name" />
+                                        </div>
+                                        <div className="col-md-6">
+                                            <label for="input1" className="form-label">Reps</label>
+                                            <input value={reps} onChange={e => setReps(e.target.value)} type="text" className="form-control" id="input1" placeholder="Workout Name" />
+                                        </div>
+                                        <div className="col-md-6">
+                                            <label for="input1" className="form-label">Weight</label>
+                                            <input value={weight} onChange={e => setWeight(e.target.value)} type="text" className="form-control" id="input1" placeholder="Workout Name" />
                                         </div>
 
                                         <div className="col-md-12">
                                             <div className="d-md-flex d-grid align-items-center gap-3">
-                                                <button type="submit" className="btn btn-grd-primary px-4">Add Workout</button>
+                                                <button type="submit" className="btn btn-grd-primary px-4">Add Exercise</button>
                                                 <button type="button" className="btn btn-light px-4">Reset</button>
                                             </div>
                                         </div>
@@ -192,15 +233,15 @@ export default function AddWorkout() {
                     <th>
                       <input className="form-check-input" type="checkbox"/>
                     </th>
-                    <th>Workout Name</th>
-                    <th>Category</th>
-                    <th>Date</th>
+                    <th>Exercise Name</th>
+                    <th>Sets</th>
+                    <th>Reps</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                {workouts.map(workout => (
-                  <tr key={workout._id}>
+                {exercises.map(exercise => (
+                  <tr key={exercise._id}>
                     <td>
                       <input className="form-check-input" type="checkbox"/>
                     </td>
@@ -210,13 +251,14 @@ export default function AddWorkout() {
                           <img src="assets/images/orders/01.png" width="70" className="rounded-3" alt=""/>
                         </div>
                         <div className="product-info">
-                          <a href="javascript:;" className="product-title">{workout.name}</a>
+                          <a href="javascript:;" className="product-title">{exercise.name}</a>
                           <p className="mb-0 product-category">Category : Fashion</p>
                         </div>
                       </div>
                     </td>
-                    <td>{workout.category}</td>
-                    <td>{new Date(workout.date).toLocaleDateString()}</td>
+                    <td>{exercise.name}</td>
+                    <td>{exercise.sets}</td>
+                    <td>{exercise.reps}</td>
                   </tr>
                    ))}
                 </tbody>
@@ -431,5 +473,5 @@ export default function AddWorkout() {
                 </div>
             </div>
         </>
-    )
+  )
 }
