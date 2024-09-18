@@ -2,65 +2,64 @@ import React, { useState,useEffect  } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-export default function AddNutrition() {
-    const [mealType, setMealType] = useState('');
-    const [foodItem, setFoodItem] = useState('');
-    const [quantity, setQuantity] = useState('');
-    const [calories, setCalories] = useState('');
-    const [protein, setProtein] = useState('');
-    const [carbs, setCarbs] = useState('');
-    const [fats, setFats] = useState('');
-    const [nutritionEntries, setNutritionEntries] = useState([]);
-    const [userId, setUserId] = useState('');
+export default function AddProgress() {
+    const [weight, setWeight] = useState('');
+  const [bodyFatPercentage, setBodyFatPercentage] = useState('');
+  const [runTime, setRunTime] = useState('');
+  const [liftingWeight, setLiftingWeight] = useState('');
+  const [progress, setProgress] = useState([]);
 
-    useEffect(() => {
-        // Retrieve user ID from cookies or authentication context
-        const userIdFromCookie = Cookies.get('userId');
-        setUserId(userIdFromCookie);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const userId = Cookies.get('userId');
 
-        if (userIdFromCookie) {
-            // Fetch previously logged nutrition data for this user
-            axios.get(`http://localhost:5000/api/nutrition/${userIdFromCookie}`)
-                .then(response => {
-                    setNutritionEntries(response.data);
-                })
-                .catch(error => {
-                    console.error('Error fetching nutrition data:', error);
-                });
-        }
-    }, [userId]);
+    if (!userId) {
+      console.error('User ID is not found in the cookie!');
+      return;
+    }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        if (!userId) {
-            console.error('User ID is not found in the cookies!');
-            return;
-        }
-
-        const nutritionData = {
-            user: userId,
-            mealType,
-            foodItem,
-            quantity,
-            calories,
-            protein,
-            carbs,
-            fats,
-        };
-
-        axios.post('http://localhost:5000/api/nutrition', nutritionData)
-            .then(response => {
-                console.log('Nutrition data logged!', response.data);
-                setNutritionEntries([...nutritionEntries, response.data]); // Add the new entry to the list
-            })
-            .catch(error => {
-                console.error('Error logging nutrition data:', error);
-            });
+    const progressData = {
+      user: userId,
+      weight,
+      bodyFatPercentage,
+      runTime,
+      liftingWeight,
     };
 
+    axios.post('http://localhost:5000/api/progress', progressData)
+      .then(response => {
+        console.log('Progress added!', response.data);
+        // Optionally clear form fields or handle response
+        setWeight('');
+        setBodyFatPercentage('');
+        setRunTime('');
+        setLiftingWeight('');
+        fetchProgress(); // Fetch updated progress list
+      })
+      .catch(error => {
+        console.error('There was an error adding the progress!', error);
+      });
+  };
+
+  const fetchProgress = () => {
+    const userId = Cookies.get('userId');
+
+    if (!userId) return;
+
+    axios.get(`http://localhost:5000/api/progress?user=${userId}`)
+      .then(response => {
+        setProgress(response.data);
+      })
+      .catch(error => {
+        console.error('There was an error fetching the progress!', error);
+      });
+  };
+
+  useEffect(() => {
+    fetchProgress();
+  }, []);
   return (
-    <>
+   <>
     <main className="main-wrapper">
                 <div className="main-content">
                     <div className="row">
@@ -69,7 +68,7 @@ export default function AddNutrition() {
                                 <div className="card-body p-4">
                                     <div className="d-flex align-items-start justify-content-between mb-3">
                                         <div className="">
-                                            <h5 className="mb-0 fw-bold">Add Nutrition</h5>
+                                            <h5 className="mb-0 fw-bold">Add Progress</h5>
                                         </div>
                                         <div className="dropdown">
                                             <a href="javascript:;" className="dropdown-toggle-nocaret options dropdown-toggle"
@@ -84,46 +83,30 @@ export default function AddNutrition() {
                                         </div>
                                     </div>
                                     <form onSubmit={handleSubmit} className="row g-4">
-                                       
-                                        <div className="col-md-12">
-                                            <label for="input7" className="form-label">Meal Type</label>
-                                            <select value={mealType} onChange={(e) => setMealType(e.target.value)} required>
-                        <option value="">Select Meal Type</option>
-                        <option value="breakfast">Breakfast</option>
-                        <option value="lunch">Lunch</option>
-                        <option value="dinner">Dinner</option>
-                        <option value="snacks">Snacks</option>
-                    </select>
+                                        <div className="col-md-6">
+                                            <label for="input1" className="form-label">Progress Weights</label>
+                                            <input value={weight}
+            onChange={(e) => setWeight(e.target.value)} type="text" className="form-control" id="input1" placeholder="Workout Name" />
                                         </div>
                                         <div className="col-md-6">
-                                            <label for="input1" className="form-label">FoodItems</label>
-                                            <input value={foodItem} onChange={(e) => setFoodItem(e.target.value)}  type="text" className="form-control" id="input1" placeholder="Workout Name" />
+                                            <label for="input1" className="form-label">Body Percentage</label>
+                                            <input value={bodyFatPercentage}
+            onChange={(e) => setBodyFatPercentage(e.target.value)} type="text" className="form-control" id="input1" placeholder="Workout Name" />
                                         </div>
                                         <div className="col-md-6">
-                                            <label for="input1" className="form-label">Quantity</label>
-                                            <input value={quantity} onChange={(e) => setQuantity(e.target.value)} type="text" className="form-control" id="input1" placeholder="Workout Name" />
+                                            <label for="input1" className="form-label">Run Time</label>
+                                            <input value={runTime}
+            onChange={(e) => setRunTime(e.target.value)} type="text" className="form-control" id="input1" placeholder="Workout Name" />
                                         </div>
                                         <div className="col-md-6">
-                                            <label for="input1" className="form-label">Calories</label>
-                                            <input value={calories} onChange={(e) => setCalories(e.target.value)} type="text" className="form-control" id="input1" placeholder="Workout Name" />
+                                            <label for="input1" className="form-label">Lifting Weights</label>
+                                            <input  value={liftingWeight}
+            onChange={(e) => setLiftingWeight(e.target.value)} type="text" className="form-control" id="input1" placeholder="Workout Name" />
                                         </div>
-                                        <div className="col-md-6">
-                                            <label for="input1" className="form-label">Protein</label>
-                                            <input value={protein} onChange={(e) => setProtein(e.target.value)} type="text" className="form-control" id="input1" placeholder="Workout Name" />
-                                        </div>
-                                        <div className="col-md-6">
-                                            <label for="input1" className="form-label">Carbs</label>
-                                            <input value={carbs} onChange={(e) => setCarbs(e.target.value)} type="text" className="form-control" id="input1" placeholder="Workout Name" />
-                                        </div>
-                                        <div className="col-md-6">
-                                            <label for="input1" className="form-label">Fats</label>
-                                            <input value={fats} onChange={(e) => setFats(e.target.value)} type="text" className="form-control" id="input1" placeholder="Workout Name" />
-                                        </div>
-                                        
 
                                         <div className="col-md-12">
                                             <div className="d-md-flex d-grid align-items-center gap-3">
-                                                <button type="submit" className="btn btn-grd-primary px-4">Add Nutrition</button>
+                                                <button type="submit" className="btn btn-grd-primary px-4">Add Progress</button>
                                                 <button type="button" className="btn btn-light px-4">Reset</button>
                                             </div>
                                         </div>
@@ -239,15 +222,15 @@ export default function AddNutrition() {
                     <th>
                       <input className="form-check-input" type="checkbox"/>
                     </th>
-                    <th>MealType</th>
-                    <th>Food Item</th>
-                    <th>Carbs</th>
+                    <th>Progress weight</th>
+                    <th>bodyFatPercentage</th>
+                    <th>runTime</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                {nutritionEntries.map(nutritionEntrie => (
-                  <tr key={nutritionEntrie._id}>
+                {progress.map(progress => (
+                  <tr key={progress._id}>
                     <td>
                       <input className="form-check-input" type="checkbox"/>
                     </td>
@@ -257,14 +240,13 @@ export default function AddNutrition() {
                           <img src="assets/images/orders/01.png" width="70" className="rounded-3" alt=""/>
                         </div>
                         <div className="product-info">
-                          <a href="javascript:;" className="product-title">{nutritionEntrie.mealType}</a>
+                          <a href="javascript:;" className="product-title">{progress.weight}</a>
                           <p className="mb-0 product-category">Category : Fashion</p>
                         </div>
                       </div>
                     </td>
-                    <td>{nutritionEntrie.mealType}</td>
-                    <td>{nutritionEntrie.foodItem}</td>
-                    <td>{nutritionEntrie.carbs}</td>
+                    <td>{progress.bodyFatPercentage}</td>
+                    <td>{progress.runTime}</td>
                   </tr>
                    ))}
                 </tbody>

@@ -20,4 +20,3 @@ const workoutTracking_Model = mongoose.Schema({
     Workout: mongoose.model('workoutTracking', workoutTracking_Model),
     Exercise: mongoose.model('exerciseTracking', exerciseTracking_Model)
   };
-  
