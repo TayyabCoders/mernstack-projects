@@ -44,8 +44,8 @@ export default function () {
              </div>
               <div className="profile-info pt-5 d-flex align-items-center justify-content-between">
                 <div className="">
-                  <h3>Jhon Deo</h3>
-                  <p className="mb-0">Engineer at BB Agency Industry<br/>
+                  <h3>user name</h3>
+                  <p className="mb-0">Mr world<br/>
                    New York, United States</p>
                 </div>
                 <div className="">
@@ -82,17 +82,17 @@ export default function () {
                  </div>
 								<form className="row g-4">
 									<div className="col-md-6">
-										<label for="input1" className="form-label">First Name</label>
-										<input type="text" className="form-control" id="input1" placeholder="First Name"/>
+										<label for="input1" className="form-label">User Name</label>
+										<input type="text" className="form-control" id="input1" placeholder="User Name"/>
 									</div>
-									<div className="col-md-6">
+									{/* <div className="col-md-6">
 										<label for="input2" className="form-label">Last Name</label>
 										<input type="text" className="form-control" id="input2" placeholder="Last Name"/>
 									</div>
 									<div className="col-md-12">
 										<label for="input3" className="form-label">Phone</label>
 										<input type="text" className="form-control" id="input3" placeholder="Phone"/>
-									</div>
+									</div> */}
 									<div className="col-md-12">
 										<label for="input4" className="form-label">Email</label>
 										<input type="email" className="form-control" id="input4"/>
@@ -101,11 +101,12 @@ export default function () {
 										<label for="input5" className="form-label">Password</label>
 										<input type="password" className="form-control" id="input5"/>
 									</div>
-									<div className="col-md-12">
-										<label for="input6" className="form-label">DOB</label>
-										<input type="date" className="form-control" id="input6"/>
+                  <div className="col-md-12">
+										<label for="input6" className="form-label"> Confirm Password</label>
+										<input type="password" className="form-control" id="input6"/>
 									</div>
-									<div className="col-md-12">
+									
+									{/* <div className="col-md-12">
 										<label for="input7" className="form-label">Country</label>
 										<select id="input7" className="form-select">
 											<option selected="">Choose...</option>
@@ -113,9 +114,9 @@ export default function () {
 											<option>Two</option>
 											<option>Three</option>
 										</select>
-									</div>
+									</div> */}
 									
-									<div className="col-md-6">
+									{/* <div className="col-md-6">
 										<label for="input8" className="form-label">City</label>
 										<input type="text" className="form-control" id="input8" placeholder="City"/>
 									</div>
@@ -141,7 +142,14 @@ export default function () {
 											<button type="button" className="btn btn-grd-primary px-4">Update Profile</button>
 											<button type="button" className="btn btn-light px-4">Reset</button>
 										</div>
-									</div>
+									</div> */}
+
+<div className="col-md-12">
+										<div className="d-md-flex d-grid align-items-center gap-3">
+											<button type="button" className="btn btn-grd-primary px-4">Update Profile</button>
+											<button type="button" className="btn btn-light px-4">Reset</button>
+										</div>
+									</div> 
 								</form>
 							</div>
             </div>
@@ -167,13 +175,11 @@ export default function () {
                  </div>
                  <div className="full-info">
                   <div className="info-list d-flex flex-column gap-3">
-                    <div className="info-list-item d-flex align-items-center gap-3"><span className="material-icons-outlined">account_circle</span><p className="mb-0">Full Name: Jhon Deo</p></div>
+                    <div className="info-list-item d-flex align-items-center gap-3"><span className="material-icons-outlined">account_circle</span><p className="mb-0">Full Name: Tanoli</p></div>
                     <div className="info-list-item d-flex align-items-center gap-3"><span className="material-icons-outlined">done</span><p className="mb-0">Status: active</p></div>
-                    <div className="info-list-item d-flex align-items-center gap-3"><span className="material-icons-outlined">code</span><p className="mb-0">Role: Developer</p></div>
-                    <div className="info-list-item d-flex align-items-center gap-3"><span className="material-icons-outlined">flag</span><p className="mb-0">Country: USA</p></div>
-                    <div className="info-list-item d-flex align-items-center gap-3"><span className="material-icons-outlined">language</span><p className="mb-0">Language: English</p></div>
-                    <div className="info-list-item d-flex align-items-center gap-3"><span className="material-icons-outlined">send</span><p className="mb-0">Email: jhon.xyz</p></div>
-                    <div className="info-list-item d-flex align-items-center gap-3"><span className="material-icons-outlined">call</span><p className="mb-0">Phone: (124) 895-6724</p></div>
+                   
+                    <div className="info-list-item d-flex align-items-center gap-3"><span className="material-icons-outlined">send</span><p className="mb-0">Email: Tanoli.xyz</p></div>
+                
                   </div>
                 </div>
               </div>
@@ -197,7 +203,7 @@ export default function () {
                   </div>
                  </div>
 
-                <div className="account-list d-flex flex-column gap-4">
+                {/* <div className="account-list d-flex flex-column gap-4">
                   <div className="account-list-item d-flex align-items-center gap-3">
                     <img src="assets/images/apps/05.png" width="35" alt=""/>
                     <div className="flex-grow-1">
@@ -258,7 +264,7 @@ export default function () {
                       <input className="form-check-input" type="checkbox" checked/>
                     </div>
                   </div>
-                </div>
+                </div> */}
 
 
 
@@ -277,9 +283,7 @@ export default function () {
 
       <div className="overlay btn-toggle"></div>
   
-     <footer className="page-footer">
-      <p className="mb-0">Copyright © 2024. All right reserved.</p>
-    </footer>
+  
   
   <div className="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCart">
     <div className="offcanvas-header border-bottom h-70">

@@ -1,6 +1,8 @@
 import React, { useState,useEffect  } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import jwt_decode from 'jwt-decode';
+
 
 export default function AddWorkout() {
     const [name, setName] = useState('');
@@ -11,7 +13,19 @@ export default function AddWorkout() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('User ID from cookie:', Cookies.get('userId'));
+    var userData = Cookies.get('userData');
+
+    if (userData) {
+        try {
+            // Decode the JWT
+            var decodedToken = jwt_decode(userData);
+            console.log(decodedToken);
+        } catch (error) {
+            console.error('Failed to decode token:', error);
+        }
+    } else {
+        console.log('No userData cookie found');
+    }
     const userId = Cookies.get('userId');
     if (!userId) {
       console.error('User ID is not found in the cookie!');
