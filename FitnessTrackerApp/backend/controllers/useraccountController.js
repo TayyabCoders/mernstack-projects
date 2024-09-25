@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs');
 const userAccount_Model =  require('../models/userAccount');
+const jwt = require('jsonwebtoken');
 
 // @Request   GET
 // @Route     /api/userAccount/
@@ -64,14 +65,13 @@ const createUserAccount = async(req,res)=>{
 // @access    private
 
 const updateUserAccount = async(req,res)=>{
-    
     // record id
     const id = req.params.id;
     
     // updated data 
     const {userName,userEmail,userPassword} = req.body;
     
-
+    
     if(!userName){
         return res.status(400).json({ error: 'user name is required' });
     }
@@ -83,24 +83,42 @@ const updateUserAccount = async(req,res)=>{
     if(!userPassword){
         return res.status(400).json({ error: 'user password is required' });
     }
+    
+
+    // console.log('Received data:', { userName, userEmail, userPassword });
 
     // Handle file upload
-    const profileImage = req.file ? req.file.path : '';
+    // const profileImage = req.file ? req.file.path : '';
     // Update Data Object
+    // Optional: Hash the password before updating the database
+    const genSalt = await bcrypt.genSalt(10);
+    const hashPassword = await bcrypt.hash(userPassword,genSalt);
     const updateData = {
         userName:userName,
         userEmail:userEmail,
-        userPassword:userPassword,
-        userProfile: profileImage,
-        userRole:'customer'
+        userPassword:hashPassword,
+        // userProfile: profileImage,
+        // userRole:'customer'
     }
 
     // Find todo By Id and Update
     const AvailableUser = await userAccount_Model.findByIdAndUpdate(id, updateData, { new: true });
+        // Only pass necessary information into the JWT
+    const tokenPayload = {
+        _id: AvailableUser._id,
+        userName: AvailableUser.userName,
+        userEmail: AvailableUser.userEmail,
+      };
+  
+      // Sign the new token
+      const token = jwt.sign(
+        tokenPayload,          // Payload: user ID and updated data
+        'sdsada',              // Replace this with process.env.JWT_SECRET
+        { expiresIn: '1d' }    // Token expiration
+      );
     
-    console.log(AvailableUser)
 
-    res.status(200).json({success:'Account Updated Successfull'})
+    res.status(200).json({success:'Account Updated Successfull',token})
 }
 
 // @Request   DELETE

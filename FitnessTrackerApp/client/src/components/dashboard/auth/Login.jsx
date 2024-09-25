@@ -1,21 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
-
 import axios from 'axios';
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-import Cookies from 'js-cookie';
 import {jwtDecode}  from 'jwt-decode';
-
 import { Link } from 'react-router-dom';
 
 export default function Login() {
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
   const [UserEmail , setUserEmail] = useState('');
   const [UserPassword , setUserPassword] = useState('');
  
+  useEffect(() => {
+    const token = localStorage.getItem('userToken');
+    if (token) {
+      navigate('/'); // Redirect to the profile page or home
+      // alert("You are already logged in");
+    }
+  }, [navigate]);
+
   const toastMessage = (message,type) => {
     (type==="error")?(
     toast.error(message, {
@@ -47,21 +50,21 @@ const HandleLogin =async(e)=>{
       // localStorage.setItem('userToken', token);
       const token = LoginResponse.data.token;
     
-      
+      localStorage.setItem('userToken', token); 
       const decodedToken = jwtDecode(token);
       console.log(decodedToken);
       const userId = decodedToken.userId;
       
      
       
-      Cookies.set('userData',token, { expires: 7 });
-      Cookies.set('userId', userId, { expires: 7 });
+      // Cookies.set('userData',token, { expires: 7 });
+      // Cookies.set('userId', userId, { expires: 7 });
 
       toastMessage("Login Successfully !!" ,"Success")
 
       setTimeout(() => {
         
-        Navigate('/');
+        navigate('/');
       }, 9000);
 
     }
@@ -112,7 +115,7 @@ const HandleLogin =async(e)=>{
 											</div>
 											<div className="col-12">
 												<div className="text-start">
-													<p className="mb-0">Don't have an account yet? <a href="auth-basic-register.html">Sign up here</a>
+													<p className="mb-0">Don't have an account yet? <Link to="/register">Sign Up here</Link>
 													</p>
 												</div>
 											</div>

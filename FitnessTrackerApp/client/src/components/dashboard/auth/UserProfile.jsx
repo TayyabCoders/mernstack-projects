@@ -1,6 +1,97 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import {jwtDecode} from 'jwt-decode';
+import axios from 'axios';
 
-export default function () {
+export default function UserProfile() {
+  // State to hold user data
+  const [userName, setUserName] = useState('');
+  const [userEmail, setUserEmail] = useState('');
+  const [userPassword, setUserPassword] = useState('');
+  const [userCPassword, setUserCPassword] = useState('');
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(false);
+  const [userData, setUserData] = useState({ username: '', email: '' });
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Password match validation
+    if (userPassword !== userCPassword) {
+      setError('Passwords do not match');
+      return;
+    }
+
+    try {
+      const token = localStorage.getItem('userToken');
+      const decodedToken = jwtDecode(token); // Decode the token to get user ID
+      const id = decodedToken._id; // Assuming JWT is stored in localStorage
+
+      console.log('Sending data:', {
+        username: userName,
+        email: userEmail,
+        password: userPassword,
+      });
+
+
+      const response = await axios.put(`http://localhost:5000/api/useraccount/${id}`, {
+        userName: userName,
+        userEmail: userEmail,
+        userPassword: userPassword,
+      }); 
+
+      // Get the new token from the server response
+    const { token: newToken } = response.data;
+
+    // Update localStorage with the new token
+    localStorage.setItem('userToken', newToken);
+
+     // Decode the new token and update the UI
+     const updatedDecodedToken = jwtDecode(newToken);
+     setUserData({
+       username: updatedDecodedToken.userName, // Access directly from the decoded token
+       email: updatedDecodedToken.userEmail, // Assuming userEmail is also inside the decoded token
+     });
+      
+      setSuccess(true); // Set success flag
+      setError(null); // Clear error
+      console.log('Profile updated successfully:', response.data);
+    } catch (err) {
+      console.error('Error updating profile:', err);
+      setError('Failed to update profile');
+      setSuccess(false); // Set success to false if there's an error
+    }
+  };
+
+  // Handle reset button
+  const handleReset = () => {
+    setUserName('');
+    setUserEmail('');
+    setUserPassword('');
+    setUserCPassword('');
+    setError(null);
+    setSuccess(false);
+  };
+  useEffect(() => {
+    const token = localStorage.getItem('userToken');
+        // Decode the token
+        const decodedToken = jwtDecode(token);
+        
+        // Log the entire decoded token to check the structure
+        console.log("Decoded Token:", decodedToken);
+
+        // Extract username and email (adjust based on your token structure)
+        const username = decodedToken.userName;
+        const userEmail =decodedToken.userEmail;
+        console.log(username)
+        console.log(userEmail)
+
+        // Set the extracted data into the state
+        setUserData({ username, email: userEmail });
+
+       
+      
+  }, []);
   return (
     <>
 
@@ -44,13 +135,11 @@ export default function () {
              </div>
               <div className="profile-info pt-5 d-flex align-items-center justify-content-between">
                 <div className="">
-                  <h3>user name</h3>
-                  <p className="mb-0">Mr world<br/>
-                   New York, United States</p>
+                  <h3>User-Name: {userData.username}</h3>
+                  <p className="mb-0">{userData.email}<br/>
+                   Status: Active</p>
                 </div>
-                <div className="">
-                  <a href="javascript:;" className="btn btn-grd-primary rounded-5 px-4"><i className="bi bi-chat me-2"></i>Send Message</a>
-                </div>
+              
               </div>
               <div className="kewords d-flex align-items-center gap-3 mt-4 overflow-x-auto">
                  <button type="button" className="btn btn-sm btn-light rounded-5 px-4">UX Research</button>
@@ -80,73 +169,29 @@ export default function () {
                     </ul>
                   </div>
                  </div>
-								<form className="row g-4">
+								<form onSubmit={handleSubmit} className="row g-4">
+                {error && <p className="alert alert-danger">{error}</p>}
+                {success && <p className="alert alert-success">Profile updated successfully!</p>}
 									<div className="col-md-6">
 										<label for="input1" className="form-label">User Name</label>
-										<input type="text" className="form-control" id="input1" placeholder="User Name"/>
+										<input value={userName} onChange={(e) => setUserName(e.target.value)} type="text" className="form-control" id="input1" placeholder="User Name"/>
 									</div>
-									{/* <div className="col-md-6">
-										<label for="input2" className="form-label">Last Name</label>
-										<input type="text" className="form-control" id="input2" placeholder="Last Name"/>
-									</div>
-									<div className="col-md-12">
-										<label for="input3" className="form-label">Phone</label>
-										<input type="text" className="form-control" id="input3" placeholder="Phone"/>
-									</div> */}
+									
 									<div className="col-md-12">
 										<label for="input4" className="form-label">Email</label>
-										<input type="email" className="form-control" id="input4"/>
+										<input value={userEmail} onChange={(e) => setUserEmail(e.target.value)} type="email" className="form-control" id="input4"/>
 									</div>
 									<div className="col-md-12">
 										<label for="input5" className="form-label">Password</label>
-										<input type="password" className="form-control" id="input5"/>
+										<input value={userPassword} onChange={(e) => setUserPassword(e.target.value)} type="password" className="form-control" id="input5"/>
 									</div>
                   <div className="col-md-12">
 										<label for="input6" className="form-label"> Confirm Password</label>
-										<input type="password" className="form-control" id="input6"/>
+										<input value={userCPassword} onChange={(e) => setUserCPassword(e.target.value)} type="password" className="form-control" id="input6"/>
 									</div>
-									
-									{/* <div className="col-md-12">
-										<label for="input7" className="form-label">Country</label>
-										<select id="input7" className="form-select">
-											<option selected="">Choose...</option>
-											<option>One</option>
-											<option>Two</option>
-											<option>Three</option>
-										</select>
-									</div> */}
-									
-									{/* <div className="col-md-6">
-										<label for="input8" className="form-label">City</label>
-										<input type="text" className="form-control" id="input8" placeholder="City"/>
-									</div>
-									<div className="col-md-4">
-										<label for="input9" className="form-label">State</label>
-										<select id="input9" className="form-select">
-											<option selected="">Choose...</option>
-											<option>One</option>
-											<option>Two</option>
-											<option>Three</option>
-										</select>
-									</div>
-									<div className="col-md-2">
-										<label for="input10" className="form-label">Zip</label>
-										<input type="text" className="form-control" id="input10" placeholder="Zip"/>
-									</div>
-									<div className="col-md-12">
-										<label for="input11" className="form-label">Address</label>
-										<textarea className="form-control" id="input11" placeholder="Address ..." rows="4" cols="4"></textarea>
-									</div>
-									<div className="col-md-12">
+                  <div className="col-md-12">
 										<div className="d-md-flex d-grid align-items-center gap-3">
-											<button type="button" className="btn btn-grd-primary px-4">Update Profile</button>
-											<button type="button" className="btn btn-light px-4">Reset</button>
-										</div>
-									</div> */}
-
-<div className="col-md-12">
-										<div className="d-md-flex d-grid align-items-center gap-3">
-											<button type="button" className="btn btn-grd-primary px-4">Update Profile</button>
+											<button type="submit" className="btn btn-grd-primary px-4">Update Profile</button>
 											<button type="button" className="btn btn-light px-4">Reset</button>
 										</div>
 									</div> 
@@ -175,10 +220,10 @@ export default function () {
                  </div>
                  <div className="full-info">
                   <div className="info-list d-flex flex-column gap-3">
-                    <div className="info-list-item d-flex align-items-center gap-3"><span className="material-icons-outlined">account_circle</span><p className="mb-0">Full Name: Tanoli</p></div>
+                    <div className="info-list-item d-flex align-items-center gap-3"><span className="material-icons-outlined">account_circle</span><p className="mb-0">Full Name: {userData.username}</p></div>
                     <div className="info-list-item d-flex align-items-center gap-3"><span className="material-icons-outlined">done</span><p className="mb-0">Status: active</p></div>
                    
-                    <div className="info-list-item d-flex align-items-center gap-3"><span className="material-icons-outlined">send</span><p className="mb-0">Email: Tanoli.xyz</p></div>
+                    <div className="info-list-item d-flex align-items-center gap-3"><span className="material-icons-outlined">send</span><p className="mb-0">Email: {userData.email}</p></div>
                 
                   </div>
                 </div>

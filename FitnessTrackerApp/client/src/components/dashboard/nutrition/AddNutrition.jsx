@@ -1,6 +1,7 @@
 import React, { useState,useEffect  } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import {jwtDecode}  from 'jwt-decode';
 
 export default function AddNutrition() {
     const [mealType, setMealType] = useState('');
@@ -13,30 +14,40 @@ export default function AddNutrition() {
     const [nutritionEntries, setNutritionEntries] = useState([]);
     const [userId, setUserId] = useState('');
 
-    useEffect(() => {
-        // Retrieve user ID from cookies or authentication context
-        const userIdFromCookie = Cookies.get('userId');
-        setUserId(userIdFromCookie);
+    // useEffect(() => {
+    //     // Retrieve user ID from cookies or authentication context
+    //     const token = localStorage.getItem('userToken');
+    //     const decodedToken = jwtDecode(token);
+    //     const userId = decodedToken.id._id;
+    //     console.log(userId)
 
-        if (userIdFromCookie) {
-            // Fetch previously logged nutrition data for this user
-            axios.get(`http://localhost:5000/api/nutrition/${userIdFromCookie}`)
+       
+    //         // Fetch previously logged nutrition data for this user
+    //         axios.get(`http://localhost:5000/api/nutrition/${userId}`)
+    //             .then(response => {
+    //                 setNutritionEntries(response.data);
+    //             })
+    //             .catch(error => {
+    //                 console.error('Error fetching nutrition data:', error);
+    //             });
+    // }, [userId]);
+    useEffect(() => {
+            axios.get(`http://localhost:5000/api/nutrition`)
                 .then(response => {
                     setNutritionEntries(response.data);
                 })
                 .catch(error => {
                     console.error('Error fetching nutrition data:', error);
                 });
-        }
-    }, [userId]);
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (!userId) {
-            console.error('User ID is not found in the cookies!');
-            return;
-        }
+        const token = localStorage.getItem('userToken');
+        const decodedToken = jwtDecode(token);
+        const userId = decodedToken.id._id;
+        console.log(userId)
 
         const nutritionData = {
             user: userId,
@@ -52,6 +63,7 @@ export default function AddNutrition() {
         axios.post('http://localhost:5000/api/nutrition', nutritionData)
             .then(response => {
                 console.log('Nutrition data logged!', response.data);
+                alert("Nutrients Added Successfully")
                 setNutritionEntries([...nutritionEntries, response.data]); // Add the new entry to the list
             })
             .catch(error => {

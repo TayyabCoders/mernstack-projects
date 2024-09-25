@@ -1,7 +1,7 @@
 import React, { useState,useEffect  } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import jwt_decode from 'jwt-decode';
+import {jwtDecode}  from 'jwt-decode';
 
 
 export default function AddWorkout() {
@@ -13,12 +13,15 @@ export default function AddWorkout() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    var userData = Cookies.get('userData');
+    const token = localStorage.getItem('userToken');
+    const decodedToken = jwtDecode(token);
+    const userId = decodedToken.id._id;
+    console.log(userId)
 
-    if (userData) {
+    if (token) {
         try {
             // Decode the JWT
-            var decodedToken = jwt_decode(userData);
+            
             console.log(decodedToken);
         } catch (error) {
             console.error('Failed to decode token:', error);
@@ -26,14 +29,15 @@ export default function AddWorkout() {
     } else {
         console.log('No userData cookie found');
     }
-    const userId = Cookies.get('userId');
-    if (!userId) {
-      console.error('User ID is not found in the cookie!');
-      return;
-    }
+    // const userId = Cookies.get('userId');
+    // if (!userId) {
+    //   console.error('User ID is not found in the cookie!');
+    //   return;
+    // }
     axios.post('http://localhost:5000/api/workout', { name, category,user: userId })
       .then(response => {
         console.log('Workout added!', response.data);
+        alert("Workout Added Successfully")
         // Optionally clear form fields or handle response
       })
       .catch(error => {

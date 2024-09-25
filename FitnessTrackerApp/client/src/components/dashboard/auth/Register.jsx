@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 
 export default function Register() {
     const navigate = useNavigate();
@@ -106,7 +107,7 @@ export default function Register() {
                                        </div>
                                        <div className="col-12">
                                            <div className="text-start">
-                                               <p className="mb-0">Already have an account? <a href="auth-basic-login.html">Sign in here</a></p>
+                                               <p className="mb-0">Already have an account? <Link to="/login">Sign in here</Link></p>
                                            </div>
                                        </div>
                                    </form>

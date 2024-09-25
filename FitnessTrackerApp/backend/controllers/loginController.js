@@ -34,11 +34,18 @@ const Login = async (req, res) => {
     //     return res.status(500).json({ error: 'Internal server error' });
     // }
 
-    const token = jwt.sign(
-        { id: userAuth },
-        'sdsada', // Use the SECRET_KEY from environment variables
-        { expiresIn: '1d' } // Shorter expiry for security
-    );
+    const tokenPayload = {
+        _id: userAuth._id,
+        userName: userAuth.userName,
+        userEmail: userAuth.userEmail,
+      };
+  
+      // Sign the new token
+      const token = jwt.sign(
+        tokenPayload,          // Payload: user ID and updated data
+        'sdsada',              // Replace this with process.env.JWT_SECRET
+        { expiresIn: '1d' }    // Token expiration
+      );
 
     return res.status(200).json({ token });
 };

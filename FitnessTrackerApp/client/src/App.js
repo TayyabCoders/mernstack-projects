@@ -10,8 +10,6 @@ import AddExercise from './components/dashboard/exercise/AddExercise';
 import AddNutrition from './components/dashboard/nutrition/AddNutrition';
 import AddProgress from './components/dashboard/progress/AddProgress';
 
-
-
 function App() {
   return (
     <>

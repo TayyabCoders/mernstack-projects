@@ -42,6 +42,7 @@ export default function AddExercise() {
     })
     .then(response => {
       console.log('Exercise added!', response.data);
+      alert("Exercise added successfully")
       // Optionally clear form fields or handle response
     })
     .catch(error => {

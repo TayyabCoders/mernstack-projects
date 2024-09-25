@@ -1,6 +1,6 @@
 import React, { useState,useEffect  } from 'react';
 import axios from 'axios';
-import Cookies from 'js-cookie';
+import {jwtDecode}  from 'jwt-decode';
 
 export default function AddProgress() {
     const [weight, setWeight] = useState('');
@@ -11,12 +11,10 @@ export default function AddProgress() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const userId = Cookies.get('userId');
-
-    if (!userId) {
-      console.error('User ID is not found in the cookie!');
-      return;
-    }
+    const token = localStorage.getItem('userToken');
+    const decodedToken = jwtDecode(token);
+    const userId = decodedToken.id._id;
+    console.log(userId)
 
     const progressData = {
       user: userId,
@@ -29,6 +27,7 @@ export default function AddProgress() {
     axios.post('http://localhost:5000/api/progress', progressData)
       .then(response => {
         console.log('Progress added!', response.data);
+        alert("Progress Added Successfully")
         // Optionally clear form fields or handle response
         setWeight('');
         setBodyFatPercentage('');
@@ -41,12 +40,26 @@ export default function AddProgress() {
       });
   };
 
+  // const fetchProgress = () => {
+  //   const userId = Cookies.get('userId');
+
+  //   if (!userId) return;
+
+  //   axios.get(`http://localhost:5000/api/progress?user=${userId}`)
+  //     .then(response => {
+  //       setProgress(response.data);
+  //     })
+  //     .catch(error => {
+  //       console.error('There was an error fetching the progress!', error);
+  //     });
+  // };
+
+  // useEffect(() => {
+  //   fetchProgress();
+  // }, []);
+  
   const fetchProgress = () => {
-    const userId = Cookies.get('userId');
-
-    if (!userId) return;
-
-    axios.get(`http://localhost:5000/api/progress?user=${userId}`)
+    axios.get(`http://localhost:5000/api/progress`)
       .then(response => {
         setProgress(response.data);
       })

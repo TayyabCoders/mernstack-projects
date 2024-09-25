@@ -1,6 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import {jwtDecode} from 'jwt-decode';
+import { Navigate } from 'react-router-dom';
 
 function Index() {
+  const [userData, setUserData] = useState({ username: '', email: '' });
+
+  useEffect(() => {
+    const token = localStorage.getItem('userToken');
+
+    if (token) {
+      // Decode the token
+      const decodedToken = jwtDecode(token);
+      
+      // Log the entire decoded token to check the structure
+      console.log("Decoded Token:", decodedToken);
+
+      // Extract username and email (adjust based on your token structure)
+      const username = decodedToken.userName; // Ensure this matches your token structure
+      const userEmail = decodedToken.userEmail; // Ensure this matches your token structure
+      console.log(username);
+      console.log(userEmail);
+
+      // Set the extracted data into the state
+      setUserData({ username, email: userEmail });
+    } else {
+      return <Navigate to="/login" />; // No token means not logged in
+    }
+  }, []);
   return (
     <>
   <main className="main-wrapper">
@@ -42,7 +68,7 @@ function Index() {
                       <img src="assets/images/avatars/01.png" className="rounded-circle bg-grd-info p-1"  width="60" height="60" alt="user"/>
                       <div className="">
                         <p className="mb-0 fw-semibold">Welcome back</p>
-                        <h4 className="fw-semibold mb-0 fs-4 mb-0">Jhon Anderson!</h4>
+                        <h4 className="fw-semibold mb-0 fs-4 mb-0">{userData.username}</h4>
                       </div>
                     </div>
                     <div className="d-flex align-items-center gap-5">
