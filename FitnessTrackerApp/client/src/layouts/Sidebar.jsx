@@ -458,7 +458,7 @@ export default function Sidebar() {
                   Analysis
                 </Link>
                 </li>
-                <li><a href="index2.html"><i className="material-icons-outlined">arrow_right</i>eCommerce</a>
+                <li><a href="index2.html"><i className="material-icons-outlined">arrow_right</i>Fitness</a>
                 </li>
               </ul>
             </li>
@@ -482,7 +482,7 @@ export default function Sidebar() {
               <a href="javascript:;" className="has-arrow">
                 <div className="parent-icon"><i className="material-icons-outlined">shopping_bag</i>
                 </div>
-                <div className="menu-title">eCommerce</div>
+                <div className="menu-title">Fitness Forms</div>
               </a>
               <ul>
                 <li>
@@ -554,8 +554,7 @@ export default function Sidebar() {
                         Register
                       </Link>
                     </li>
-                    <li><a href="auth-basic-forgot-password.html" target="_blank"><i className="material-icons-outlined">arrow_right</i>Forgot Password</a></li>
-                    <li><a href="auth-basic-reset-password.html" target="_blank"><i className="material-icons-outlined">arrow_right</i>Reset Password</a></li>
+              
                   </ul>
                 </li>
               </ul>
@@ -569,40 +568,10 @@ export default function Sidebar() {
               </Link>
             </li>
 
-            <li>
-              <a className="has-arrow" href="javascript:;">
-                <div className="parent-icon"><i className="material-icons-outlined">report_problem</i>
-                </div>
-                <div className="menu-title">Pages</div>
-              </a>
-              <ul>
-                <li><a href="pages-error-404.html" target="_blank"><i className="material-icons-outlined">arrow_right</i>404
-                  Error</a>
-                </li>
-                <li><a href="pages-error-505.html" target="_blank"><i className="material-icons-outlined">arrow_right</i>505
-                  Error</a>
-                </li>
-                <li><a href="pages-coming-soon.html" target="_blank"><i
-                  className="material-icons-outlined">arrow_right</i>Coming Soon</a>
-                </li>
-                <li><a href="pages-starter-page.html" target="_blank"><i
-                  className="material-icons-outlined">arrow_right</i>Blank Page</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="faq.html">
-                <div className="parent-icon"><i className="material-icons-outlined">help_outline</i>
-                </div>
-                <div className="menu-title">FAQ</div>
-              </a>
-            </li>
-            <li>
-              <a href="pricing-table.html">
-
-
-              </a>
-            </li>
+        
+             
+           
+           
             <li className="menu-label">Charts & Maps</li>
             <li>
               <a className="has-arrow" href="javascript:;">
