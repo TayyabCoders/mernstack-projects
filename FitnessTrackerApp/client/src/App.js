@@ -20,7 +20,7 @@ function App() {
       <Route path="/" element={<><Sidebar /><Index /></>} />
       <Route path="/userProfile" element={<><Sidebar /><UserProfile /></>} />
       <Route path="/addworkout" element={<><Sidebar /><AddWorkout /></>} />
-      <Route path="/addexercise" element={<><Sidebar /><AddExercise /></>} />
+      {/* <Route path="/addexercise" element={<><Sidebar /><AddExercise /></>} /> */}
       <Route path="/addnutrion" element={<><Sidebar /><AddNutrition /></>} />
       <Route path="/addprogress" element={<><Sidebar /><AddProgress /></>} />
 

@@ -17,7 +17,7 @@ app.use('/api/exercise',require('./routes/exerciseRoutes'))
 app.use('/api/nutrition',require('./routes/nutritionRoutes'))
 app.use('/api/progress',require('./routes/progressRoutes'))
 app.use('/api/useraccount/login',require('./routes/loginRoute'))
-app.use('/api/dashboard',require('./routes/userDashboard'))
+app.use('/api/fruitvegetable',require('./routes/fruitVegetableRoutes'))
 
 
 

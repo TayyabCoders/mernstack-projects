@@ -415,11 +415,15 @@ export default function Sidebar() {
                   </div>
                 </a>
                 <hr className="dropdown-divider" />
-                <a className="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;"><i
-                  className="material-icons-outlined">person_outline</i>Profile</a>
+                <Link to="/userProfile" className="dropdown-item d-flex align-items-center gap-2 py-2">
+            <i className="material-icons-outlined">person_outline</i>
+            Profile
+        </Link>
 
-                <a className="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;"><i
-                  className="material-icons-outlined">dashboard</i>Dashboard</a>
+        <Link to="/" className="dropdown-item d-flex align-items-center gap-2 py-2">
+            <i className="material-icons-outlined">dashboard</i>
+            Dashboard
+        </Link>
 
                 <hr className="dropdown-divider" />
                 {/* <a className="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;"><i
@@ -500,7 +504,7 @@ export default function Sidebar() {
                 <li>
                   <Link to="/addprogress">
                     <i className="material-icons-outlined">arrow_right</i>
-                    Progress Form
+                    Progress Display
                   </Link>
                 </li>
                 {/* <li>
@@ -515,12 +519,12 @@ export default function Sidebar() {
                     Workout Form
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link to="/addexercise">
                     <i className="material-icons-outlined">arrow_right</i>
                     Exercise Form
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </li>
 

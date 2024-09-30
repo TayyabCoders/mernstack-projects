@@ -65,7 +65,7 @@ const HandleLogin =async(e)=>{
       setTimeout(() => {
         
         navigate('/');
-      }, 9000);
+      }, 5000);
 
     }
 
