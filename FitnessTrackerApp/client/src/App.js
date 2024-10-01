@@ -9,6 +9,7 @@ import AddWorkout from './components/dashboard/workout/AddWorkout';
 import AddExercise from './components/dashboard/exercise/AddExercise';
 import AddNutrition from './components/dashboard/nutrition/AddNutrition';
 import AddProgress from './components/dashboard/progress/AddProgress';
+import SearchProgress from './components/dashboard/progress/SearchProgress';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       {/* <Route path="/addexercise" element={<><Sidebar /><AddExercise /></>} /> */}
       <Route path="/addnutrion" element={<><Sidebar /><AddNutrition /></>} />
       <Route path="/addprogress" element={<><Sidebar /><AddProgress /></>} />
+      <Route path="/searchprogress" element={<><Sidebar /><SearchProgress /></>} />
 
       {/* Other routes without Sidebar */}
       <Route path="/register" element={<Register />} />

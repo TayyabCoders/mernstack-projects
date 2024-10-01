@@ -462,8 +462,6 @@ export default function Sidebar() {
                   Analysis
                 </Link>
                 </li>
-                <li><a href="index2.html"><i className="material-icons-outlined">arrow_right</i>Fitness</a>
-                </li>
               </ul>
             </li>
             {/* <li>
@@ -501,6 +499,12 @@ export default function Sidebar() {
           Nutrition List
         </Link>
       </li> */}
+       <li>
+                  <Link to="/searchprogress">
+                    <i className="material-icons-outlined">arrow_right</i>
+                    Search Progress
+                  </Link>
+                </li>
                 <li>
                   <Link to="/addprogress">
                     <i className="material-icons-outlined">arrow_right</i>
